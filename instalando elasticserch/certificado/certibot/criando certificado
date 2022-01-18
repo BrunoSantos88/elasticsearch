@@ -1,0 +1,30 @@
+criando certificado SSL 
+
+sudo add-apt-repository ppa:certbot/certbot
+
+sudo apt update
+
+sudo apt install python-certbot-nginx
+
+"ja criado o proxi reverso no seu nginx"
+sudo nano /etc/nginx/sites-available/example.com]
+
+sudo nginx -t
+
+"verificar os serviçoes que estao liberados nginx e no elasticserch"
+sudo ufw status
+
+"liberar e deletar protocolos http"
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+
+"primeiro acesso vai pedir o email."
+sudo certbot --nginx -d example.com -d
+"opçao 1 , yes e yes"
+
+"testar se esta ok ssl"
+https://www.digitalocean.com/community/tutorials/como-proteger-o-nginx-com-o-let-s-encrypt-no-ubuntu-18-04-pt
+
+Para testar o processo de renovação, você pode fazer um “dry” com certbot:
+
+sudo certbot renew --dry-run

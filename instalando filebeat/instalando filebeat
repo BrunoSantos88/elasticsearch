@@ -1,0 +1,30 @@
+instalando filebeat
+
+apt install filebeat
+
+sudo nano /etc/filebeat/filebeat.yml
+nano /etc/filebeat/modules.d/system.yml
+
+marcar #
+#output.elasticsearch:
+  # Array of hosts to connect to.
+  #hosts: ["localhost:9200"]
+...
+
+desmarcar #
+output.logstash:
+  # The Logstash hosts
+  hosts: ["localhost:5044"]
+
+  sudo filebeat modules enable system
+ 
+Você pode ver uma lista de módulos ativados e desativados executando:
+
+sudo filebeat modules list
+
+sudo filebeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
+sudo filebeat setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['localhost:9200'] -E setup.kibana.host=localhost:5601
+
+sudo systemctl start filebeat
+sudo systemctl enable filebeat
+

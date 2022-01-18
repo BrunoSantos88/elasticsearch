@@ -1,0 +1,18 @@
+instalar allow
+
+sudo ufw enable
+
+sudo ufw allow from 34.95.142.8 to any port 9200
+
+Passo 9 — Desabilitando ou redefinindo o UFW (opcional)
+Se você decidir que não quer usar o UFW, você pode desativá-lo com este comando:
+
+sudo ufw status
+
+sudo ufw disable
+ 
+Quaisquer regras que você tenha criado com o UFW já não estarão mais ativas. Você sempre poderá executar sudo ufw enable se precisar ativá-lo mais tarde.
+
+Se você já tiver regras do UFW configuradas, mas decidir que quer começar novamente, você pode usar o comando de redefinição:
+
+sudo ufw reset

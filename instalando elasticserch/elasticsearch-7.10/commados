@@ -1,0 +1,6 @@
+sudo systemctl daemon-reload
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+
+systemctl status elasticsearch
+curl -X GET http://localhost:9200

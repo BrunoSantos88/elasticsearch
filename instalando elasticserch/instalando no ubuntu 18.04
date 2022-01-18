@@ -1,0 +1,36 @@
+Pre requsito
+
+JAVA 8 ou 11 SO: 
+Ubuntu 18.04
+RAM: 4GB
+CPU: 2
+
+sudo apt install openjdk-11-jdk -y
+
+
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+
+sudo apt update
+
+sudo apt install elasticsearch
+
+sudo nano /etc/elasticsearch/elasticsearch.yml
+
+sudo systemctl start elasticsearch
+
+sudo systemctl enable elasticsearch
+
+systemctl status elasticsearch
+
+curl -X GET "localhost:9200"
+curl -X GET "34.95.148.66:9200"
+"isso mostra versao do elasticsearch instalada"
+
+[verificar serviçoes ativos]
+curl -XGET '35.198.4.39:9200/_cat/indices?v&pretty'
+
+sudo systemctl daemon-reload
+systemctl restart elasticsearch
+systemctl status elasticsearch

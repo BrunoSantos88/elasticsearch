@@ -1,0 +1,24 @@
+instalando modulo heartbeat
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.16.2-amd64.deb
+sudo dpkg -i heartbeat-7.16.2-amd64.deb
+
+sudo heartbeat setup
+sudo service heartbeat-elastic start
+
+heartbeat -e
+
+
+#[exemplo]##
+- type: http
+   id: nginx
+   name: http-server
+   hosts: ["http://34.121.238.88"]
+   check.request.method: HEAD
+   check.response.status: [200]
+   schedule: '@every 5s'
+
+##[pasta]
+
+  nano etc/heartbeat/monitors.d/criar
+  nano etc/heartbeat/heartbeat.yml

@@ -1,0 +1,38 @@
+Lebrando kibana , so da pra intalar kibana se o elasticsearch ja estivaer instalando.
+
+Pre Requisitos.
+
+elasticsearch
+ngix "implemtar proxi reverso"
+Certbot "so para acessar com certificado SSL"
+
+sudo apt install kibana
+
+sudo systemctl enable kibana
+
+"criar senha " login kibanaadmin
+echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
+"vai gerar essa chave"
+kibanaadmin:$apr1$Va7VlPlg$cU5dKpOnCKZyFqjrAT/8l.
+kibanaadmin:$apr1$H6dcpTyu$iNw5rvUHQCdcL8AdHw8FA1
+kibanaadmin:$apr1$u0HIlvLR$UtDTHjVI8KJQ3Uj58.sQI0
+
+nano /etc/nginx/sites-available/example.com
+
+"criar mesmo no site-enable"
+sudo ln -s /etc/nginx/sites-available/kibana.brunodevopsteste.com.br /etc/nginx/sites-enabled/kibana.brunodevopsteste.com.br
+
+'verificar se esta ok'
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+sudo ufw allow 'Nginx Full'
+
+
+
+arquivo kibana 
+nano /etc/kibana/kibana.yml
+#kibana host:5601
+#elasticserach: localhost:9200
+desmarcar
